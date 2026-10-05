@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baranova Dental</title>
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <!-- Importamos Bootstrap 5 desde su CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <!-- ==========================================
+         BARRA DE NAVEGACIÓN (SIN LOGO)
+         ========================================== -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <!-- Logo integrado en el Navbar -->
+            <a class="navbar-brand" href="{{ url_for('home', lang=lang) }}">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Baranova Dental Logo" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <!-- ... resto de tu menú (Tratamientos, Equipo, Idioma, Pedir Cita) ... -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="{{ url_for('home', lang=lang) }}">Inicio</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-semibold" href="#" data-bs-toggle="dropdown">Tratamientos</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item py-2" href="{{ url_for('implantes', lang=lang) }}">Implantes</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for('ortodoncia', lang=lang) }}">Ortodoncia</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for('periodoncia', lang=lang) }}">Periodoncia</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="{{ url_for('equipo', lang=lang) }}">Equipo</a></li>
+
+                    <!-- SELECTOR DE IDIOMAS CON ICONO -->
+                    <li class="nav-item dropdown ms-lg-2">
+                        <a class="nav-link dropdown-toggle fw-semibold d-inline-flex align-items-center" href="#" data-bs-toggle="dropdown">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-globe me-2" viewBox="0 0 16 16">
+                                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.2 9.2 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.2 9.2 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.14q.04 1.344.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.2 9.2 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.14a13.7 13.7 0 0 1-.312 2.5m1.482-3.5h2.146a7 7 0 0 0-.656-2.5h-2.146a13.7 13.7 0 0 1 .312 2.5M11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+                            </svg>
+                            Idioma
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+                            <li><a class="dropdown-item py-2" href="{{ url_for(request.endpoint, lang='es') }}">🇪🇸 Español</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for(request.endpoint, lang='en') }}">🇬🇧 English</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for(request.endpoint, lang='ru') }}">🇷🇺 Русский</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="btn btn-lime rounded-pill px-4 py-2 text-uppercase" href="{{ url_for('contacto', lang=lang) }}">Pedir Cita</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5 pt-5">
+
+<!-- 1. Cabecera Principal (Hero) -->
+<header class="tratamiento-hero">
+    <h1 class="hero-title mb-4">La base de una boca<br>sana y duradera.</h1>
+    <p class="hero-description mx-auto mb-5" style="max-width: 800px;">
+        Tiene sentido que no le hayas dado importancia antes. Casi nadie explica lo que está en juego. Sin salud periodontal, ningún tratamiento es estable. Las encías y el hueso son la base sobre la que se sostiene todo lo demás.
+    </p>
+    <a href="{{ url_for('contacto', lang=lang) }}" class="btn-lime mb-3">Solicitar valoración</a>
+    <div class="d-block">
+        <small class="text-muted fw-bold">No recibirás presión. Solo información clara para ayudarte a decidir.</small>
+    </div>
+</header>
+
+<!-- 2. Empatía y Validación -->
+<section class="row align-items-center mb-5 pb-4">
+    <div class="col-lg-6 mb-4 mb-lg-0">
+        <h2 class="section-title">Sangrado, inflamación o movilidad no son normales.</h2>
+    </div>
+    <div class="col-lg-5 offset-lg-1">
+        <p class="fs-5 text-muted mb-4">
+            Son señales de que algo está pasando a nivel de las encías y el hueso. Y muchas veces, cuando se hacen visibles, el problema ya lleva tiempo avanzando en silencio.
+        </p>
+        <p class="about-text p-3 bg-light rounded-3 border-start border-4 border-dark">
+            Tiene sentido que no lo hayas detectado antes. La periodontitis avanza sin dolor hasta fases avanzadas.
+        </p>
+    </div>
+</section>
+
+<!-- 3. Cambio de Paradigma (Con Imagen 1) -->
+<section class="row align-items-center mb-5 py-4">
+    <!-- COLUMNA IZQUIERDA: Imagen 1 -->
+    <div class="col-lg-5 mb-4 mb-lg-0">
+        <div class="about-image-wrapper">
+            <img src="{{ url_for('static', filename='img/periodoncia_1.jpg') }}" alt="Tratamiento de la base periodontal" class="about-img">
+        </div>
+    </div>
+
+    <!-- COLUMNA DERECHA: Texto -->
+    <div class="col-lg-6 offset-lg-1">
+        <span class="etiqueta-superior">POR QUÉ FALLAN LOS TRATAMIENTOS</span>
+        <h2 class="section-title mb-4">Muchos tratamientos fallan porque no se trata la base.</h2>
+        <p class="about-text mb-4">
+            Encías, hueso y microbiota determinan el éxito a largo plazo de implantes, ortodoncia y cualquier rehabilitación. Sin esta base, los resultados no se mantienen.
+        </p>
+    </div>
+</section>
+
+<!-- 4. Los Pilares del Tratamiento -->
+<section class="mb-5 pb-4">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <article class="pilar-card">
+                <h3 class="h4 fw-bold mb-3">Evaluación profunda</h3>
+                <p class="mb-0 text-muted">Analizamos a fondo la inflamación y factores sistémicos.</p>
+                <span class="anotacion">Porque la periodontitis no siempre tiene síntomas visibles.</span>
+            </article>
+        </div>
+        <div class="col-md-6">
+            <article class="pilar-card">
+                <h3 class="h4 fw-bold mb-3">Tratamiento causal</h3>
+                <p class="mb-0 text-muted">No nos quedamos solo en los síntomas superficiales.</p>
+                <span class="anotacion">La causa es microbiana. El tratamiento también debe serlo.</span>
+            </article>
+        </div>
+        <div class="col-md-6">
+            <article class="pilar-card">
+                <h3 class="h4 fw-bold mb-3">Seguimiento continuo</h3>
+                <p class="mb-0 text-muted">La periodoncia no se resuelve de una vez. Requiere control periódico real.</p>
+                <span class="anotacion">Sin seguimiento, la recidiva es frecuente.</span>
+            </article>
+        </div>
+        <div class="col-md-6">
+            <article class="pilar-card">
+                <h3 class="h4 fw-bold mb-3">Prevención real</h3>
+                <p class="mb-0 text-muted">Evitamos que los problemas aparezcan o se repitan.</p>
+                <span class="anotacion">El objetivo no es curar, es que no vuelva a pasar.</span>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- 5. Proceso (Línea de tiempo con Imagen 2) -->
+<section id="proceso" class="row align-items-center mb-5 pb-4">
+    <!-- COLUMNA IZQUIERDA: Textos y Timeline -->
+    <div class="col-lg-6 mb-4 mb-lg-0 pe-lg-4">
+        <h2 class="section-title mb-4">Protocolo de tratamiento</h2>
+        <ul class="timeline-list">
+            <li><strong>Paso 01 | Diagnóstico periodontal completo:</strong> Evaluamos el estado real de encías, hueso alveolar y microbiota.</li>
+            <li><strong>Paso 02 | Plan de tratamiento personalizado:</strong> Según el grado y tipo de enfermedad, diseñamos un protocolo específico.</li>
+            <li><strong>Paso 03 | Tratamiento activo:</strong> Eliminamos la causa, no enmascaramos los síntomas.</li>
+        </ul>
+    </div>
+
+    <!-- COLUMNA DERECHA: Imagen 2 -->
+    <div class="col-lg-5 offset-lg-1">
+        <!-- Aspect-ratio 1:1 para cuadrar la imagen con la altura del texto -->
+        <div class="about-image-wrapper" style="aspect-ratio: 1 / 1;">
+            <img src="{{ url_for('static', filename='img/periodoncia_2.jpg') }}" alt="Proceso de tratamiento periodontal" class="about-img">
+        </div>
+    </div>
+</section>
+
+<!-- 6. Testimonios -->
+<section class="mb-5 py-5 border-top border-bottom">
+    <div class="row text-center g-4">
+        <div class="col-md-4">
+            <p class="fst-italic text-muted">"Llevaba años con molestias y había pasado por varios tratamientos. Aquí fue la primera vez que entendí qué estaba pasando."</p>
+            <small class="fw-bold text-uppercase">— Ortodoncia integrativa</small>
+        </div>
+        <div class="col-md-4">
+            <p class="fst-italic text-muted">"Lo que más valoré fue que no tenían ningún interés en que decidiera rápido. Solo querían que lo entendiera bien."</p>
+            <small class="fw-bold text-uppercase">— Paciente de implantes</small>
+        </div>
+        <div class="col-md-4">
+            <p class="fst-italic text-muted">"No fue solo el resultado. Fue la tranquilidad durante todo el proceso. Sabía en todo momento qué pasaba y por qué."</p>
+            <small class="fw-bold text-uppercase">— Rehabilitación completa</small>
+        </div>
+    </div>
+</section>
+
+<!-- 7. Preguntas Frecuentes -->
+<section class="row mb-5 pb-5">
+    <div class="col-lg-8 mx-auto">
+        <h2 class="section-title text-center mb-4">Preguntas Frecuentes</h2>
+        <details>
+            <summary>¿Es normal que sangren las encías?</summary>
+            <p>No, el sangrado nunca es normal. Es el primer signo de inflamación y de que las bacterias están atacando los tejidos que soportan el diente. Si tus encías sangran al cepillarte, necesitas una valoración.</p>
+        </details>
+        <details>
+            <summary>¿Afecta a los implantes?</summary>
+            <p>Sí, de hecho es una de las principales causas de pérdida de implantes (periimplantitis). Por eso nunca colocamos implantes sin habernos asegurado de que el sistema periodontal está completamente sano.</p>
+        </details>
+        <details>
+            <summary>¿Tiene relación con la salud general?</summary>
+            <p>Absolutamente. La periodontitis está científicamente relacionada con un mayor riesgo de problemas cardiovasculares, descontrol de la diabetes e incluso complicaciones durante el embarazo.</p>
+        </details>
+    </div>
+</section>
+
+<!-- 8. Conexión del sistema -->
+<section class="mb-5 bg-dark text-white rounded-4 p-5 text-center">
+    <h3 class="mb-4">La periodoncia conecta con todo</h3>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-5">
+            <h4 class="text-lime" style="color: #389E28;">Implantes</h4>
+            <p>Sin encías sanas, los implantes no son estables a largo plazo.</p>
+            <a href="{{ url_for('implantes', lang=lang) }}" class="text-white fw-bold text-decoration-none">Ver Implantes &rarr;</a>
+        </div>
+        <div class="col-md-5">
+            <h4 class="text-lime" style="color: #389E28;">Ortodoncia</h4>
+            <p>El movimiento dental en ortodoncia requiere una base periodontal sana.</p>
+            <a href="{{ url_for('ortodoncia', lang=lang) }}" class="text-white fw-bold text-decoration-none">Ver Ortodoncia &rarr;</a>
+        </div>
+    </div>
+</section>
+        </div>
+</body>
+</html>

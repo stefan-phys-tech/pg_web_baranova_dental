@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baranova Dental</title>
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <!-- Importamos Bootstrap 5 desde su CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <!-- ==========================================
+         BARRA DE NAVEGACIÓN
+         ========================================== -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <!-- Logo integrado en el Navbar -->
+            <a class="navbar-brand" href="{{ url_for('home', lang=lang) }}">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Baranova Dental Logo" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="{{ url_for('home', lang=lang) }}">Home</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-semibold" href="#" data-bs-toggle="dropdown">Treatments</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item py-2" href="{{ url_for('implantes', lang=lang) }}">Implants</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for('ortodoncia', lang=lang) }}">Orthodontics</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for('periodoncia', lang=lang) }}">Periodontics</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="{{ url_for('equipo', lang=lang) }}">Team</a></li>
+
+                    <!-- SELECTOR DE IDIOMAS CON ICONO -->
+                    <li class="nav-item dropdown ms-lg-2">
+                        <a class="nav-link dropdown-toggle fw-semibold d-inline-flex align-items-center" href="#" data-bs-toggle="dropdown">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-globe me-2" viewBox="0 0 16 16">
+                                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.2 9.2 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.2 9.2 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.14q.04 1.344.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.2 9.2 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.14a13.7 13.7 0 0 1-.312 2.5m1.482-3.5h2.146a7 7 0 0 0-.656-2.5h-2.146a13.7 13.7 0 0 1 .312 2.5M11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+                            </svg>
+                            Language
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+                            <li><a class="dropdown-item py-2" href="{{ url_for(request.endpoint, lang='es') }}">🇪🇸 Español</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for(request.endpoint, lang='en') }}">🇬🇧 English</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for(request.endpoint, lang='ru') }}">🇷🇺 Русский</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="btn btn-lime rounded-pill px-4 py-2 text-uppercase" href="{{ url_for('contacto', lang=lang) }}">Book Appointment</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5 pt-5">
+
+<!-- 1. Cabecera Principal (Hero) -->
+<header class="tratamiento-hero">
+    <h1 class="hero-title mb-4">Purpose-driven orthodontics.<br>It's not just about straightening teeth.</h1>
+    <p class="hero-description mx-auto mb-5" style="max-width: 800px;">
+        It makes perfect sense to have doubts, especially if you've had a treatment in the past that didn't last. Aligning teeth without considering how they function together can create new issues. Our approach starts with balancing your entire oral system.
+    </p>
+    <a href="{{ url_for('contacto', lang=lang) }}" class="btn-lime mb-3">Request a full assessment</a>
+    <div class="d-block mt-3">
+        <small class="text-muted fw-bold">No pressure. Just clear information to help you make your decision.</small>
+    </div>
+</header>
+
+<!-- 2. Empatía y Validación -->
+<section class="row align-items-center mb-5 pb-4">
+    <div class="col-lg-6 mb-4 mb-lg-0">
+        <h2 class="section-title">You may have already had braces. And something might still feel off.</h2>
+    </div>
+    <div class="col-lg-5 offset-lg-1">
+        <p class="fs-5 text-muted mb-4">
+            Straightening teeth without accounting for how they function together can lead to long-term problems.
+        </p>
+        <p class="about-text p-3 bg-light rounded-3 border-start border-4 border-dark">
+            It is completely understandable that you feel this way. Relapses and recurring issues are far more common than they should be.
+        </p>
+    </div>
+</section>
+
+<!-- 3. Cambio de Paradigma (Con Imagen 1) -->
+<section class="row align-items-center mb-5 py-4">
+    <!-- COLUMNA IZQUIERDA: Imagen 1 -->
+    <div class="col-lg-5 mb-4 mb-lg-0">
+        <div class="about-image-wrapper">
+            <img src="{{ url_for('static', filename='img/ortodoncia1.jpg') }}" alt="System balance in orthodontics" class="about-img">
+        </div>
+    </div>
+
+    <!-- COLUMNA DERECHA: Texto -->
+    <div class="col-lg-6 offset-lg-1">
+        <span class="etiqueta-superior">A PARADIGM SHIFT</span>
+        <h2 class="section-title mb-4">Orthodontics is about the balance of your entire system.</h2>
+        <p class="about-text mb-4">
+            We never move teeth without fully understanding how it affects the whole. Because a perfectly straight tooth in an unbalanced system is still a problem.
+        </p>
+    </div>
+</section>
+
+<!-- 4. Los Pilares del Tratamiento -->
+<section id="pilares" class="mb-5 pb-4">
+    <div class="row g-4 justify-content-center">
+        <!-- Solo tenemos un pilar destacado en tu texto, lo centramos para darle impacto -->
+        <div class="col-md-8">
+            <article class="pilar-card text-center border-left-0 border-top" style="border-top: 5px solid #389E28;">
+                <h3 class="h3 fw-bold mb-3">Unstable bite</h3>
+                <p class="mb-0 text-muted fs-5">Irregular dental contacts that cause wear, tear, and chronic tension.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- 5. Proceso (Línea de tiempo con Imagen 2) -->
+<section id="proceso" class="row align-items-center mb-5 pb-4">
+    <!-- COLUMNA IZQUIERDA: Textos y Timeline -->
+    <div class="col-lg-6 mb-4 mb-lg-0 pe-lg-4">
+        <h2 class="section-title mb-4">How we work</h2>
+        <ul class="timeline-list">
+            <li><strong>Step 01 | Comprehensive functional analysis:</strong> We evaluate function, bite, jaw joint, and habits—not just tooth position.</li>
+            <li><strong>Step 02 | Customized plan:</strong> Designed specifically for your unique case, not for a generic aesthetic result.</li>
+            <li><strong>Step 03 | Controlled execution:</strong> Active monitoring at every stage to ensure the results remain stable.</li>
+            <li><strong>Step 04 | Long-term stability:</strong> The goal isn't just a pretty smile; it's a bite that works properly and lasts a lifetime.</li>
+        </ul>
+    </div>
+
+    <!-- COLUMNA DERECHA: Imagen 2 -->
+    <div class="col-lg-5 offset-lg-1">
+        <!-- El style de aspect-ratio: 1/1 la hace más cuadrada para equilibrar el bloque de texto -->
+        <div class="about-image-wrapper" style="aspect-ratio: 1 / 1;">
+            <img src="{{ url_for('static', filename='img/ortodoncia2.jpeg') }}" alt="Integrative orthodontics process" class="about-img">
+        </div>
+    </div>
+</section>
+
+<!-- 6. Testimonios -->
+<section class="mb-5 py-5 border-top border-bottom">
+    <div class="row text-center g-4">
+        <div class="col-md-4">
+            <p class="fst-italic text-muted">"I had been in discomfort for years and went through several treatments. This was the first time I actually understood what was happening."</p>
+            <small class="fw-bold text-uppercase">— Integrative Orthodontics</small>
+        </div>
+        <div class="col-md-4">
+            <p class="fst-italic text-muted">"What I valued most was that they had no interest in rushing my decision. They just wanted to make sure I fully understood."</p>
+            <small class="fw-bold text-uppercase">— Implant Patient</small>
+        </div>
+        <div class="col-md-4">
+            <p class="fst-italic text-muted">"It wasn't just the final result. It was the peace of mind throughout the whole process. I always knew what was happening and why."</p>
+            <small class="fw-bold text-uppercase">— Full Rehabilitation</small>
+        </div>
+    </div>
+</section>
+
+<!-- 7. Preguntas Frecuentes -->
+<section class="row mb-5 pb-5">
+    <div class="col-lg-8 mx-auto">
+        <h2 class="section-title text-center mb-4">Frequently Asked Questions</h2>
+        <details>
+            <summary>Can I get orthodontic treatment if I've already had it before?</summary>
+            <p>Absolutely. In fact, many of our patients come to us for retreatment. We will thoroughly evaluate why your previous treatment failed or relapsed (usually because the bite or function wasn't properly adjusted) to ensure that this time, the results are permanent.</p>
+        </details>
+        <details>
+            <summary>Clear aligners or traditional braces?</summary>
+            <p>The technique (aligners or brackets) is simply a tool. What truly matters is the treatment plan designed by the specialist. We work with both systems, carefully selecting the one that best suits your specific clinical goals.</p>
+        </details>
+    </div>
+</section>
+
+<!-- 8. Conexión del sistema -->
+<section class="mb-5 bg-dark text-white rounded-4 p-5 text-center">
+    <h3 class="mb-4">Orthodontics connects to everything</h3>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-5">
+            <h4 class="text-lime" style="color: #389E28;">Periodontics</h4>
+            <p>The stability of any tooth movement relies entirely on periodontal health.</p>
+            <a href="{{ url_for('periodoncia', lang=lang) }}" class="text-white fw-bold text-decoration-none">View Periodontics &rarr;</a>
+        </div>
+        <div class="col-md-5">
+            <h4 class="text-lime" style="color: #389E28;">Implants</h4>
+            <p>Poor oral function can easily compromise your existing implants.</p>
+            <a href="{{ url_for('implantes', lang=lang) }}" class="text-white fw-bold text-decoration-none">View Implants &rarr;</a>
+        </div>
+    </div>
+</section>
+</div>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baranova Dental</title>
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <!-- Importamos Bootstrap 5 desde su CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+
+    <!-- ==========================================
+         BARRA DE NAVEGACIÓN
+         ========================================== -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <!-- Logo integrado en el Navbar -->
+            <a class="navbar-brand" href="{{ url_for('home', lang=lang) }}">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Baranova Dental Logo" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="{{ url_for('home', lang=lang) }}">Home</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-semibold" href="#" data-bs-toggle="dropdown">Treatments</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item py-2" href="{{ url_for('implantes', lang=lang) }}">Implants</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for('ortodoncia', lang=lang) }}">Orthodontics</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for('periodoncia', lang=lang) }}">Periodontics</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="{{ url_for('equipo', lang=lang) }}">Team</a></li>
+
+                    <!-- SELECTOR DE IDIOMAS CON ICONO -->
+                    <li class="nav-item dropdown ms-lg-2">
+                        <a class="nav-link dropdown-toggle fw-semibold d-inline-flex align-items-center" href="#" data-bs-toggle="dropdown">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-globe me-2" viewBox="0 0 16 16">
+                                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.2 9.2 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.2 9.2 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.14q.04 1.344.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.2 9.2 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.14a13.7 13.7 0 0 1-.312 2.5m1.482-3.5h2.146a7 7 0 0 0-.656-2.5h-2.146a13.7 13.7 0 0 1 .312 2.5M11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+                            </svg>
+                            Language
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+                            <li><a class="dropdown-item py-2" href="{{ url_for(request.endpoint, lang='es') }}">🇪🇸 Español</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for(request.endpoint, lang='en') }}">🇬🇧 English</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for(request.endpoint, lang='ru') }}">🇷🇺 Русский</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="btn btn-lime rounded-pill px-4 py-2 text-uppercase" href="{{ url_for('contacto', lang=lang) }}">Book Appointment</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+         SECCIÓN: NUESTRO EQUIPO
+         ========================================== -->
+    <div class="container my-5 pt-5">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <span class="etiqueta-superior">MEET THE EXPERTS</span>
+                <h1 class="hero-title mb-4">The team behind your smile</h1>
+            </div>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+
+            <!-- 1. Dra. Tatiana Baranova -->
+            <div class="col-lg-4 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="{{ url_for('static', filename='img/tatiana_baranova.jpeg') }}" alt="Dr. Tatiana Baranova" class="team-img">
+                    </div>
+                    <!-- Etiqueta con colores invertidos para destacar a la doctora principal -->
+                    <span class="team-badge" style="background-color: #389E28; color: white; border-color: #389E28;">CLINICAL DIRECTION</span>
+                    <h2 class="team-name">Dr. Tatiana Baranova</h2>
+                    <p class="team-role">Clinical direction · Integrative orthodontics</p>
+                    <div class="team-divider"></div>
+                    <p class="team-desc">Responsible for the global treatment approach. She integrates orthodontics, craniomandibular function, and general health to understand each case from its root, not just from the teeth.</p>
+                </div>
+            </div>
+
+            <!-- 2. Dr. Mohamed Abouhaboucha -->
+            <div class="col-lg-4 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="{{ url_for('static', filename='img/mohamed.jpeg') }}" alt="Dr. Mohamed Abouhaboucha" class="team-img">
+                    </div>
+                    <span class="team-badge">CLINICAL TEAM</span>
+                    <h2 class="team-name">Dr. Mohamed Abouhaboucha</h2>
+                    <p class="team-role">Periodontics · General dentistry</p>
+                    <div class="team-divider"></div>
+                    <p class="team-desc">Specialized in the foundation that supports the entire treatment: gums, bone, and long-term stability. His work ensures that treatments not only function well but last over time.</p>
+                </div>
+            </div>
+
+            <!-- 3. Dra. Alina Apalimova -->
+            <div class="col-lg-4 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="{{ url_for('static', filename='img/alina_placeholder.jpg') }}" alt="Dr. Alina Apalimova" class="team-img">
+                    </div>
+                    <span class="team-badge">CLINICAL TEAM</span>
+                    <h2 class="team-name">Dr. Alina Apalimova</h2>
+                    <p class="team-role">Oral surgery</p>
+                    <div class="team-divider"></div>
+                    <p class="team-desc">In charge of surgical procedures within the global plan. Her approach prioritizes precision, careful planning, and a predictable recovery for the patient.</p>
+                </div>
+            </div>
+
+            <!-- 4. Dr. Rafael Vázquez (NUEVO) -->
+            <div class="col-lg-4 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="{{ url_for('static', filename='img/rafael_placeholder.jpg') }}" alt="Dr. Rafael Vázquez" class="team-img">
+                    </div>
+                    <span class="team-badge">CLINICAL TEAM</span>
+                    <h2 class="team-name">Dr. Rafael Vázquez</h2>
+                    <p class="team-role">Endodontics, prosthodontics, surgery</p>
+                    <div class="team-divider"></div>
+                    <p class="team-desc">Responsible for restoring or replacing missing or damaged dentition with combined, fixed, and removable treatments, optimally combining the different areas.</p>
+                </div>
+            </div>
+
+            <!-- 5. Andrés Bianchi -->
+            <div class="col-lg-4 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="{{ url_for('static', filename='img/andres.jpeg') }}" alt="Andrés Bianchi" class="team-img">
+                    </div>
+                    <span class="team-badge">COORDINATION & MANAGEMENT</span>
+                    <h2 class="team-name">Andrés Bianchi</h2>
+                    <p class="team-role">Clinic management · Treatment coordination</p>
+                    <div class="team-divider"></div>
+                    <p class="team-desc">Responsible for ensuring the whole process runs smoothly. He coordinates planning, budgets, laboratory communication, and digital technology, connecting the clinic, patient, and lab.</p>
+                </div>
+            </div>
+
+            <!-- 6. Tetyana (Auxiliar - Nombre corregido) -->
+            <div class="col-lg-4 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="{{ url_for('static', filename='img/diapo6.png') }}" alt="Tetyana - Dental Assistant" class="team-img">
+                    </div>
+                    <span class="team-badge">CLINICAL SUPPORT</span>
+                    <h2 class="team-name">Tetyana</h2>
+                    <p class="team-role">Clinical assistant</p>
+                    <div class="team-divider"></div>
+                    <p class="team-desc">Accompanies the patient throughout the treatment, ensuring comfort, support, and continuity at every visit. She provides genuine care, going far beyond the technical procedure.</p>
+                </div>
+            </div>
+
+            <!-- 7. Patricia -->
+            <div class="col-lg-4 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="{{ url_for('static', filename='img/patricia.png') }}" alt="Patricia - Dental Assistant" class="team-img">
+                    </div>
+                    <span class="team-badge">CLINICAL SUPPORT</span>
+                    <h2 class="team-name">Patricia</h2>
+                    <p class="team-role">Clinical assistant</p>
+                    <div class="team-divider"></div>
+                    <p class="team-desc">Accompanies the patient throughout the treatment, ensuring comfort, support, and continuity at every visit. She provides genuine care, going far beyond the technical procedure.</p>
+                </div>
+            </div>
+
+            <!-- 8. Vanesa (Higienista) -->
+            <div class="col-lg-4 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="{{ url_for('static', filename='img/vanesa_placeholder.jpg') }}" alt="Vanesa - Clinical Hygiene" class="team-img">
+                    </div>
+                    <span class="team-badge">CLINICAL TEAM</span>
+                    <h2 class="team-name">Vanesa</h2>
+                    <p class="team-role">Clinical hygiene · Periodontal maintenance</p>
+                    <div class="team-divider"></div>
+                    <p class="team-desc">Responsible for the control and maintenance of periodontal health. Her work is key to preventing relapses and keeping long-term stability of the treatments.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

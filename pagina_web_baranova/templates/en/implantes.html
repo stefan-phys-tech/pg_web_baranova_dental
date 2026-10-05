@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baranova Dental</title>
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <!-- Importamos Bootstrap 5 desde su CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <!-- ==========================================
+         BARRA DE NAVEGACIÓN
+         ========================================== -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <!-- Logo integrado en el Navbar -->
+            <a class="navbar-brand" href="{{ url_for('home', lang=lang) }}">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Baranova Dental Logo" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="{{ url_for('home', lang=lang) }}">Home</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-semibold" href="#" data-bs-toggle="dropdown">Treatments</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item py-2" href="{{ url_for('implantes', lang=lang) }}">Implants</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for('ortodoncia', lang=lang) }}">Orthodontics</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for('periodoncia', lang=lang) }}">Periodontics</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="{{ url_for('equipo', lang=lang) }}">Team</a></li>
+
+                    <!-- SELECTOR DE IDIOMAS CON ICONO -->
+                    <li class="nav-item dropdown ms-lg-2">
+                        <a class="nav-link dropdown-toggle fw-semibold d-inline-flex align-items-center" href="#" data-bs-toggle="dropdown">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-globe me-2" viewBox="0 0 16 16">
+                                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.2 9.2 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.2 9.2 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.14q.04 1.344.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.2 9.2 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.14a13.7 13.7 0 0 1-.312 2.5m1.482-3.5h2.146a7 7 0 0 0-.656-2.5h-2.146a13.7 13.7 0 0 1 .312 2.5M11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+                            </svg>
+                            Language
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+                            <li><a class="dropdown-item py-2" href="{{ url_for(request.endpoint, lang='es') }}">🇪🇸 Español</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for(request.endpoint, lang='en') }}">🇬🇧 English</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for(request.endpoint, lang='ru') }}">🇷🇺 Русский</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="btn btn-lime rounded-pill px-4 py-2 text-uppercase" href="{{ url_for('contacto', lang=lang) }}">Book Appointment</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5 pt-5">
+
+<!-- 1. Cabecera Principal (Hero) -->
+<header class="tratamiento-hero">
+    <h1 class="hero-title mb-4">Eat, laugh, and speak again<br>with total confidence.</h1>
+    <p class="hero-description mx-auto mb-5" style="max-width: 800px;">
+        We know taking this step can bring up questions. That's why we design each treatment with your peace of mind as our priority, ensuring you can enjoy the simple things again: biting into an apple, smiling for a photo, and feeling like yourself once more.
+    </p>
+    <a href="{{ url_for('contacto', lang=lang) }}" class="btn-lime mb-3">Request a full assessment</a>
+    <div class="d-block">
+        <small class="text-muted fw-bold">No obligations, no pressure. Just the clear information you need to make your decision.</small>
+    </div>
+</header>
+
+<!-- 2. Puntos de dolor (Empatía y Validación) -->
+<section class="row align-items-center mb-5 pb-4">
+    <div class="col-lg-6 mb-4 mb-lg-0">
+        <h2 class="section-title">It is completely normal to have questions before taking the leap.</h2>
+    </div>
+    <div class="col-lg-5 offset-lg-1">
+        <ul class="fs-5 text-muted mb-4" style="line-height: 2;">
+            <li>"Will the process be painful?"</li>
+            <li>"Is this a safe investment for my health?"</li>
+            <li>"How long will the implant last in good condition?"</li>
+        </ul>
+        <p class="about-text p-3 bg-light rounded-3 border-start border-4 border-dark">
+            We completely understand how you feel. The vast majority of our patients arrive with these exact same questions. You are in good hands: our goal is to guide you, listen to you, and clear up every single fear before we begin.
+        </p>
+    </div>
+</section>
+
+<!-- 3. Cambio de Paradigma y Filosofía (Con Imagen 1) -->
+<section class="row align-items-center mb-5 py-4">
+    <div class="col-lg-5 mb-4 mb-lg-0">
+        <div class="about-image-wrapper">
+            <img src="{{ url_for('static', filename='img/diapo1.jpg') }}" alt="Comprehensive Implant Diagnosis" class="about-img">
+        </div>
+    </div>
+
+    <div class="col-lg-6 offset-lg-1">
+        <span class="etiqueta-superior">COMPREHENSIVE HEALTH</span>
+        <h2 class="section-title mb-4">A new smile built on a foundation of true health.</h2>
+        <p class="about-text">
+            Your bite, gums, bone, and habits determine whether an implant will be stable long-term. That is why we never place implants without first understanding and healing the system as a whole.
+        </p>
+    </div>
+</section>
+
+<!-- 4. Los 4 Pilares del Tratamiento -->
+<section class="mb-5 pb-4">
+    <div class="row g-4">
+        <!-- Pilar 1 -->
+        <div class="col-md-6">
+            <article class="pilar-card">
+                <h3 class="h4 fw-bold mb-3">Comprehensive preliminary diagnosis.</h3>
+                <p class="mb-0 text-muted">We don't just look at the missing tooth. We evaluate your gums, your bite, and your overall health to guarantee the implant has a solid, durable foundation.</p>
+                <span class="anotacion">The key to avoiding future complications.</span>
+            </article>
+        </div>
+        <!-- Pilar 2 -->
+        <div class="col-md-6">
+            <article class="pilar-card">
+                <h3 class="h4 fw-bold mb-3">Transparency at every step.</h3>
+                <p class="mb-0 text-muted">We explain everything simply and clearly. You will know exactly what we will do, how much it will cost, and how long it will take—no surprises, no fine print.</p>
+                <span class="anotacion">You are in complete control of your treatment.</span>
+            </article>
+        </div>
+        <!-- Pilar 3 -->
+        <div class="col-md-6">
+            <article class="pilar-card">
+                <h3 class="h4 fw-bold mb-3">Recovery follow up.</h3>
+                <p class="mb-0 text-muted">We plan the procedure using advanced technology to make it as minimally invasive as possible. We want your recovery to be comfortable and remarkably fast.</p>
+                <span class="anotacion">We care for you during and after your visit.</span>
+            </article>
+        </div>
+        <!-- Pilar 4 -->
+        <div class="col-md-6">
+            <article class="pilar-card">
+                <h3 class="h4 fw-bold mb-3">Long-term care and support.</h3>
+                <p class="mb-0 text-muted">Our work doesn't end the day we place the implant. We will stay by your side with regular check-ups to care for your new smile year after year.</p>
+                <span class="anotacion">Your stability and peace of mind are our top priorities.</span>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- 5. Proceso (Línea de tiempo con Imagen 2) -->
+<section class="row align-items-center mb-5 pb-4">
+    <div class="col-lg-6 mb-4 mb-lg-0 pe-lg-4">
+        <h2 class="section-title mb-4">We guide you through every stage</h2>
+        <ul class="timeline-list">
+            <li><strong>Step 01 | We understand your case in depth:</strong> We sit down with you, listen to your concerns, and analyze the complete health of your mouth to design the best path forward.</li>
+            <li><strong>Step 02 | We design a tailored plan:</strong> We present your options clearly and honestly, answering all your questions so you know exactly what to expect.</li>
+            <li><strong>Step 03 | You decide when to begin:</strong> No rushing, no sales pressure. We give you the time and confidence you need to make the right decision for yourself.</li>
+        </ul>
+    </div>
+
+    <div class="col-lg-5 offset-lg-1">
+        <div class="about-image-wrapper" style="aspect-ratio: 1 / 1;">
+            <img src="{{ url_for('static', filename='img/periodoncia2.jpeg') }}" alt="Implant Treatment Process" class="about-img">
+        </div>
+    </div>
+</section>
+
+<!-- 6. Testimonios (Estilo Minimalista) -->
+<section class="mb-5 py-5 border-top border-bottom">
+    <div class="row text-center g-4">
+        <div class="col-md-4">
+            <p class="fst-italic text-muted">"I had been in discomfort for years and went through several treatments. This was the first time I actually understood what was happening."</p>
+            <small class="fw-bold text-uppercase">— Integrative Orthodontics</small>
+        </div>
+        <div class="col-md-4">
+            <p class="fst-italic text-muted">"What I valued most was that they had no interest in rushing my decision. They just wanted to make sure I fully understood."</p>
+            <small class="fw-bold text-uppercase">— Implant Patient</small>
+        </div>
+        <div class="col-md-4">
+            <p class="fst-italic text-muted">"It wasn't just the final result. It was the peace of mind throughout the whole process. I always knew what was happening and why."</p>
+            <small class="fw-bold text-uppercase">— Full Rehabilitation</small>
+        </div>
+    </div>
+</section>
+
+<!-- 7. Preguntas Frecuentes -->
+<section class="row mb-5 pb-5">
+    <div class="col-lg-8 mx-auto">
+        <h2 class="section-title text-center mb-4">Frequently Asked Questions</h2>
+        <details>
+            <summary>Do I really need an implant, or are there other alternatives?</summary>
+            <p>Every smile is unique. If we can save your natural tooth safely and durably, that will always be our first choice. We will only recommend an implant if it is the most predictable and beneficial option for your long-term health.</p>
+        </details>
+        <details>
+            <summary>Is the process of getting an implant painful?</summary>
+            <p>This is the most common concern, and the answer will reassure you: no, it does not hurt. We work with local anesthesia and minimally invasive techniques. We will ensure you are comfortable at all times and plan your recovery so you barely notice any discomfort.</p>
+        </details>
+        <details>
+            <summary>What if my gums are not in good condition?</summary>
+            <p>That is a great question! Your gums are the foundation of your mouth. If there is any issue (such as inflammation or periodontitis), we will treat that first to heal the foundation. Placing an implant in healthy gums is the secret to making it last a lifetime.</p>
+        </details>
+    </div>
+</section>
+
+<!-- 8. Conexión del sistema -->
+<section class="mb-5 bg-dark text-white rounded-4 p-5 text-center">
+    <h3 class="mb-4">Your implant requires a system in balance</h3>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-5">
+            <h4 class="fw-bold" style="color: #389E28;">Periodontics</h4>
+            <p>Strong, healthy gums are the essential foundation for your implant to last a lifetime.</p>
+            <a href="{{ url_for('periodoncia', lang=lang) }}" class="text-white fw-bold text-decoration-none">View Periodontics &rarr;</a>
+        </div>
+        <div class="col-md-5">
+            <h4 class="fw-bold" style="color: #389E28;">Orthodontics</h4>
+            <p>A properly aligned bite prevents overloading and protects both your implants and natural teeth from wear.</p>
+            <a href="{{ url_for('ortodoncia', lang=lang) }}" class="text-white fw-bold text-decoration-none">View Orthodontics &rarr;</a>
+        </div>
+    </div>
+</section>
+</div>
+</body>
+</html>

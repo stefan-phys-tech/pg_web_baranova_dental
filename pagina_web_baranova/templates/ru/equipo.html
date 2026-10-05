@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baranova Dental</title>
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <!-- Importamos Bootstrap 5 desde su CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+
+    <!-- ==========================================
+         BARRA DE NAVEGACIÓN
+         ========================================== -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <!-- Logo integrado en el Navbar -->
+            <a class="navbar-brand" href="{{ url_for('home', lang=lang) }}">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Логотип Baranova Dental" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="{{ url_for('home', lang=lang) }}">Главная</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-semibold" href="#" data-bs-toggle="dropdown">Лечение</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item py-2" href="{{ url_for('implantes', lang=lang) }}">Имплантация</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for('ortodoncia', lang=lang) }}">Ортодонтия</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for('periodoncia', lang=lang) }}">Пародонтология</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="{{ url_for('equipo', lang=lang) }}">Команда</a></li>
+
+                    <!-- SELECTOR DE IDIOMAS CON ICONO -->
+                    <li class="nav-item dropdown ms-lg-2">
+                        <a class="nav-link dropdown-toggle fw-semibold d-inline-flex align-items-center" href="#" data-bs-toggle="dropdown">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-globe me-2" viewBox="0 0 16 16">
+                                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.2 9.2 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.2 9.2 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.14q.04 1.344.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.2 9.2 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.14a13.7 13.7 0 0 1-.312 2.5m1.482-3.5h2.146a7 7 0 0 0-.656-2.5h-2.146a13.7 13.7 0 0 1 .312 2.5M11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+                            </svg>
+                            Язык
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+                            <li><a class="dropdown-item py-2" href="{{ url_for(request.endpoint, lang='es') }}">🇪🇸 Español</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for(request.endpoint, lang='en') }}">🇬🇧 English</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ url_for(request.endpoint, lang='ru') }}">🇷🇺 Русский</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="btn btn-lime rounded-pill px-4 py-2 text-uppercase" href="{{ url_for('contacto', lang=lang) }}">Записаться на прием</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+         SECCIÓN: NUESTRO EQUIPO
+         ========================================== -->
+    <div class="container my-5 pt-5">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <span class="etiqueta-superior">ПОЗНАКОМЬТЕСЬ С ЭКСПЕРТАМИ</span>
+                <h1 class="hero-title mb-4">Команда, стоящая за вашей улыбкой</h1>
+            </div>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+
+            <!-- 1. Dra. Tatiana Baranova -->
+            <div class="col-lg-4 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="{{ url_for('static', filename='img/tatiana_baranova.jpeg') }}" alt="Д-р Татьяна Баранова" class="team-img">
+                    </div>
+                    <!-- Etiqueta con colores invertidos para destacar a la doctora principal -->
+                    <span class="team-badge" style="background-color: #389E28; color: white; border-color: #389E28;">РУКОВОДИТЕЛЬ КЛИНИКИ</span>
+                    <h2 class="team-name">Д-р Татьяна Баранова</h2>
+                    <p class="team-role">Главный врач · Интегративная ортодонтия</p>
+                    <div class="team-divider"></div>
+                    <p class="team-desc">Отвечает за комплексный подход к лечению. Объединяет ортодонтию, функцию челюсти и общее состояние здоровья, чтобы понять каждый случай от его первопричины, а не только на уровне зубов.</p>
+                </div>
+            </div>
+
+            <!-- 2. Dr. Mohamed Abouhaboucha -->
+            <div class="col-lg-4 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="{{ url_for('static', filename='img/mohamed.jpeg') }}" alt="Д-р Мохамед Абухабуша" class="team-img">
+                    </div>
+                    <span class="team-badge">МЕДИЦИНСКАЯ КОМАНДА</span>
+                    <h2 class="team-name">Д-р Мохамед Абухабуша</h2>
+                    <p class="team-role">Пародонтология · Общая стоматология</p>
+                    <div class="team-divider"></div>
+                    <p class="team-desc">Специализируется на основе, поддерживающей все лечение: деснах, костной ткани и долгосрочной стабильности. Его работа гарантирует, что лечение не только эффективно, но и сохраняется со временем.</p>
+                </div>
+            </div>
+
+            <!-- 3. Dra. Alina Apalimova -->
+            <div class="col-lg-4 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="{{ url_for('static', filename='img/alina_placeholder.jpg') }}" alt="Д-р Алина Апалимова" class="team-img">
+                    </div>
+                    <span class="team-badge">МЕДИЦИНСКАЯ КОМАНДА</span>
+                    <h2 class="team-name">Д-р Алина Апалимова</h2>
+                    <p class="team-role">Хирургическая стоматология</p>
+                    <div class="team-divider"></div>
+                    <p class="team-desc">Отвечает за хирургические процедуры в рамках общего плана лечения. В ее подходе приоритет отдается точности, тщательному планированию и предсказуемому выздоровлению пациента.</p>
+                </div>
+            </div>
+
+            <!-- 4. Dr. Rafael Vázquez (NUEVO) -->
+            <div class="col-lg-4 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="{{ url_for('static', filename='img/rafael_placeholder.jpg') }}" alt="Д-р Рафаэль Васкес" class="team-img">
+                    </div>
+                    <span class="team-badge">МЕДИЦИНСКАЯ КОМАНДА</span>
+                    <h2 class="team-name">Д-р Рафаэль Васкес</h2>
+                    <p class="team-role">Эндодонтия, ортопедия, хирургия</p>
+                    <div class="team-divider"></div>
+                    <p class="team-desc">Отвечает за восстановление или замену отсутствующих и поврежденных зубов с помощью комбинированных, несъемных и съемных конструкций, оптимально сочетая различные методы.</p>
+                </div>
+            </div>
+
+            <!-- 5. Andrés Bianchi -->
+            <div class="col-lg-4 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="{{ url_for('static', filename='img/andres.jpeg') }}" alt="Андрес Бьянки" class="team-img">
+                    </div>
+                    <span class="team-badge">КООРДИНАЦИЯ И УПРАВЛЕНИЕ</span>
+                    <h2 class="team-name">Андрес Бьянки</h2>
+                    <p class="team-role">Управляющий клиникой · Координатор лечения</p>
+                    <div class="team-divider"></div>
+                    <p class="team-desc">Отвечает за бесперебойную работу всего процесса. Координирует планирование, составление смет, связь с лабораторией и применение цифровых технологий, связывая клинику, пациента и лабораторию.</p>
+                </div>
+            </div>
+
+            <!-- 6. Tetyana (Auxiliar - Nombre corregido) -->
+            <div class="col-lg-4 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="{{ url_for('static', filename='img/diapo6.png') }}" alt="Татьяна - Ассистент стоматолога" class="team-img">
+                    </div>
+                    <span class="team-badge">МЕДИЦИНСКИЙ ПЕРСОНАЛ</span>
+                    <h2 class="team-name">Татьяна</h2>
+                    <p class="team-role">Ассистент стоматолога</p>
+                    <div class="team-divider"></div>
+                    <p class="team-desc">Сопровождает пациента на протяжении всего лечения, обеспечивая комфорт, поддержку и преемственность при каждом визите. Она является частью искренней заботы, выходящей за рамки технических процедур.</p>
+                </div>
+            </div>
+
+            <!-- 7. Patricia -->
+            <div class="col-lg-4 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="{{ url_for('static', filename='img/patricia.png') }}" alt="Патрисия - Ассистент стоматолога" class="team-img">
+                    </div>
+                    <span class="team-badge">МЕДИЦИНСКИЙ ПЕРСОНАЛ</span>
+                    <h2 class="team-name">Патрисия</h2>
+                    <p class="team-role">Ассистент стоматолога</p>
+                    <div class="team-divider"></div>
+                    <p class="team-desc">Сопровождает пациента на протяжении всего лечения, обеспечивая комфорт, поддержку и преемственность при каждом визите. Она является частью искренней заботы, выходящей за рамки технических процедур.</p>
+                </div>
+            </div>
+
+            <!-- 8. Vanesa (Higienista) -->
+            <div class="col-lg-4 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="{{ url_for('static', filename='img/vanesa_placeholder.jpg') }}" alt="Ванесса - Стоматолог-гигиенист" class="team-img">
+                    </div>
+                    <span class="team-badge">МЕДИЦИНСКАЯ КОМАНДА</span>
+                    <h2 class="team-name">Ванесса</h2>
+                    <p class="team-role">Стоматолог-гигиенист · Пародонтологическое сопровождение</p>
+                    <div class="team-divider"></div>
+                    <p class="team-desc">Отвечает за контроль и поддержание здоровья пародонта. Ее работа является ключевой для предотвращения рецидивов и поддержания долгосрочной стабильности результатов лечения.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
